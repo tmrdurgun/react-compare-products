@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 import './style.scss';
+import { request } from '../../utils/request';
+import { COMPARE_PRODUCTS_URL } from '../../constants/urls';
 
 class Products extends Component {
     constructor(props){
@@ -10,8 +12,10 @@ class Products extends Component {
         }
     }
 
-    componentDidMount() {
+    async componentDidMount() {
+        const products = await request(COMPARE_PRODUCTS_URL, 'GET');
 
+        this.setState({products});
     }
 
     render() {
