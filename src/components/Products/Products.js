@@ -17,10 +17,8 @@ class Products extends Component {
     this.helpers = helpers;
 
     this.sidebarFeatureList = [
+      "Keurmerk",
       "Artikelnummer",
-      "BUP_Conversion",
-      "BUP_UOM",
-      "BUP_Value",
       "channel",
       "Hardheid",
       "Inwendige diameter",
@@ -102,7 +100,7 @@ class Products extends Component {
                       {item.sortedKeys.map((key, keyIndex) => (
                         <>
                           {(key !== 'atp' && key !== 'display' && key !== 'grossPrice' && key !== 'listPrice'
-                            && key !== 'manufacturerImage' && key !== 'manufacturerName' && key !== 'name'
+                            && key !== 'manufacturerImage' && key !== 'manufacturerName' && key !== 'name' && item[key] !== ''
                             && key !== 'productImage' && key !== 'salePrice' && key !== 'sortedKeys' && key !== 'badges') &&
 
                             <li key={keyIndex + 1} className="product-feature-list-item list-item">{item[key]}</li>}

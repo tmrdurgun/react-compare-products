@@ -38,8 +38,8 @@
         }
 
         .sidebar-feature-container{
-            margin-top: 120px;
-
+            margin-top: 74px;
+        
             .feature-list{
                 &-item{
 
@@ -52,12 +52,18 @@
         display: flex;
 
         .product{
+            position: relative;
+
             &-header{
                 padding: 0 15px;
 
                 &-picture{
                     width: 75%;
                     margin: auto;
+
+                    img{
+                        width: 100%;
+                    }
                 }
     
                 &-name{
@@ -75,13 +81,14 @@
                     color: $lightFontColor;
                     font-size: 12px;
                     padding-bottom: 25px;
-                    margin-bottom: 20px;
                     border-bottom: 1px solid $borderColor;
                 }
             }
 
             &-content{
-                margin-top: 48px;
+                position: absolute;
+                top: 383px;
+                width: 100%;
             }
 
             &-feature-list{
