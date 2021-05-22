@@ -59,8 +59,12 @@ class Products extends Component {
 
     return (
 
+      <>
+      <div className="page-header">
+        <h1 className="page-title">{`${products && products.length} Producten vergelijken`}</h1>
+      </div>
+
       <div className="products-container">
-        <div className="products-header">4 Producten vergelijken</div>
 
         <div className="products-sidebar">
           <h4 className="sidebar-title">Je selectie</h4>
@@ -68,7 +72,13 @@ class Products extends Component {
           <div className="sidebar-filter">
             <ul className="sidebar-filter-list">
               {products && products.map((item, i) => {
-                return (<li key={i + 1} className="sidebar-filter-list-item">{item.name}</li>)
+                return (<li key={i + 1} className="sidebar-filter-list-item">
+                  <label htmlFor={`product-cb-${i + 1}`}>
+                    <input type="checkbox" name="" id={`product-cb-${i + 1}`} />
+                    <span className="text-bold">{item.name}</span>
+                    </label>
+                  
+                </li>)
               })}
             </ul>
           </div>
@@ -76,28 +86,29 @@ class Products extends Component {
           <div className="sidebar-feature-container">
             <ul className="feature-list">
               { this.sidebarFeatureList.map((item, i) => {
-                return (<li key={i + 1} className="feature-list-item">{item}</li>)
+                return (<li key={i + 1} className="feature-list-item list-item">{item}</li>)
               })}
             </ul>
           </div>
         </div>
 
         <div className="products-page">
-        {products && products.map((item, i) => (<div className="product">
+        {products && products.map((item, i) => (
+          <div className="product">
             <div className="product-header">
-              <div className="product-picture">
+              <div className="product-header-picture">
                 <img src={productImg} alt="" />
               </div>
-              <div className="product-name">{item.name}</div>
-              <div className="product-price">{item.salePrice}</div>
-              <div className="product-desc">per stuk / excl. btw</div>
+              <div className="product-header-name text-bold">{item.name}</div>
+              <div className="product-header-price">{item.salePrice}</div>
+              <div className="product-header-desc">per stuk / excl. btw</div>
             </div>
             <div className="product-content">
               <ul className="product-feature-list">
                 {item.sortedKeys.map((key, keyIndex) => {
                   if(key !== 'atp' && key !== 'display') {
                     return (
-                      <li key={keyIndex + 1} className="products-feature-list-item">{item[key]}</li> 
+                      <li key={keyIndex + 1} className="products-feature-list-item list-item">{item[key]}</li> 
                     )
                   } else {
                     return <li></li>
@@ -105,12 +116,13 @@ class Products extends Component {
                 })}
               </ul>
             </div>
-          </div>))}
-
-          
+          </div>
+          ))}
         </div>
       </div>
 
+      </>
+      
     )
   }
 }

@@ -1,5 +1,92 @@
 @import '../../variables';
 
 .products-container{
+    display: flex;
+
+    .products-sidebar{
+        min-width: 250px;
+        max-width: 250px;
+        border-right: 1px solid $borderColor;
+        
+        .sidebar-title{
+            color: $primaryColor;
+            padding: 20px 0;
+            margin-top: 15px;
+        }
+
+        .sidebar-filter{
+            &-list{
+                padding-right: 15px;
+            }
+
+            &-list-item{
+                
+                margin-bottom: 15px;
+
+                label{
+                    display: flex;
+                    cursor: pointer;
+
+                    span {
+                        display: inline-block;
+                        margin-left: 10px;
+                    }
+                }
+                
+                
+            }
+        }
+
+        .sidebar-feature-container{
+            margin-top: 120px;
+
+            .feature-list{
+                &-item{
+
+                }
+            }
+        }
+    }
+
+    .products-page{
+        display: flex;
+
+        .product{
+            padding-left: 15px;
+
+            &-header{
+                &-picture{
+                    width: 75%;
+                    margin: auto;
+                }
     
+                &-name{
+                    color: $primaryColor;
+                    margin-bottom: 15px;
+                }
+    
+                &-price{
+                    font-weight: 700;
+                    font-size: 1.2em;
+                    margin-bottom: 5px;
+                }
+    
+                &-desc{
+                    color: $lightFontColor;
+                    font-size: 12px;
+                }
+            }
+        }
+    }
+
+    .list-item{
+        font-size: 14px;
+        font-weight: 500;
+        padding: 10px 0 10px 10px;
+        border-bottom: 1px solid $borderColor;
+
+        &.highlight{
+            background: $borderColor;
+        }
+    }
 }
