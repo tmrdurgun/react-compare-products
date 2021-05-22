@@ -52,9 +52,9 @@
         display: flex;
 
         .product{
-            padding-left: 15px;
-
             &-header{
+                padding: 0 15px;
+
                 &-picture{
                     width: 75%;
                     margin: auto;
@@ -74,6 +74,30 @@
                 &-desc{
                     color: $lightFontColor;
                     font-size: 12px;
+                    padding-bottom: 25px;
+                    margin-bottom: 20px;
+                    border-bottom: 1px solid $borderColor;
+                }
+            }
+
+            &-content{
+                margin-top: 48px;
+            }
+
+            &-feature-list{
+                
+            }
+
+            &-feature-list-item{
+                &.badges{
+                    position: relative;
+
+                    img{
+                        width: 210px;
+                        position: absolute;
+                        top: -32px;
+                        left: -24px;
+                    }
                 }
             }
         }
@@ -82,8 +106,9 @@
     .list-item{
         font-size: 14px;
         font-weight: 500;
-        padding: 10px 0 10px 10px;
+        padding: 10px 0 10px 15px;
         border-bottom: 1px solid $borderColor;
+        min-height: 15px;
 
         &.highlight{
             background: $borderColor;
