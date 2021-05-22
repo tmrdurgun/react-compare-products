@@ -42,6 +42,19 @@ class Products extends Component {
     this.setState({ products });
   }
 
+  async handleItemSelect(item, checked) {
+
+    this.setState((prevState) => ({
+      products: prevState.products.map((product) => {
+        if(product.Artikelnummer === item.Artikelnummer) {
+          product.display = checked;
+        }
+
+        return product;
+      })
+    }))
+  }
+
   render() {
     const { products } = this.state;
 
@@ -64,7 +77,7 @@ class Products extends Component {
                 {products && products.map((item, i) => (
                   <li key={i + 1} className="sidebar-filter-list-item">
                     <label htmlFor={`product-cb-${i + 1}`}>
-                      <input type="checkbox" name="" id={`product-cb-${i + 1}`} />
+                      <input type="checkbox" id={`product-cb-${i + 1}`} checked={item.display} onChange={(e) => this.handleItemSelect(item, e.target.checked)} />
                       <span className="text-bold">{item.name}</span>
                     </label>
                   </li>
