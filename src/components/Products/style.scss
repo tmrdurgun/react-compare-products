@@ -2,6 +2,8 @@
 
 .products-container{
     display: flex;
+    padding-bottom: 40px;
+    border-bottom: 4px solid $primaryColor;
 
     .products-sidebar{
         min-width: 250px;

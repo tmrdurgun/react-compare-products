@@ -11,7 +11,8 @@ class Products extends Component {
     super(props);
 
     this.state = {
-      products: null
+      products: null,
+      diffKeys: null
     }
 
     this.helpers = helpers;
@@ -39,7 +40,38 @@ class Products extends Component {
     const data = await request(COMPARE_PRODUCTS_URL, 'GET');
     const products = data.products.map((item) => this.helpers.sortKeyAlphabetic(item));
 
-    this.setState({ products });
+    const diffKeys = [];
+    let searchIndex = 1;
+    let curIndex = 0;
+
+    const getObjDiffs = async () => {
+      for (const key in products[curIndex]) {
+        if (products[curIndex][key] && products[searchIndex] && products[searchIndex][key]) {
+          if(products[curIndex][key] !== products[searchIndex][key] && diffKeys.indexOf(key) === -1){
+            diffKeys.push(key);
+          }
+        }
+      }
+
+      if(curIndex < products.length) {
+        if(searchIndex < products.length) {
+          searchIndex += 1;
+          await getObjDiffs();
+        }
+  
+        if(searchIndex === products.length) {
+          curIndex += 1;
+          searchIndex = curIndex + 1;
+          await getObjDiffs();
+        }
+      }
+    }
+
+    await getObjDiffs();
+
+    console.log('diffKeys: ', diffKeys);  
+
+    this.setState({ products, diffKeys });
   }
 
   async handleItemSelect(item, checked) {
@@ -56,7 +88,7 @@ class Products extends Component {
   }
 
   render() {
-    const { products } = this.state;
+    const { products, diffKeys } = this.state;
 
     console.log('products: ', products);
 
@@ -87,7 +119,8 @@ class Products extends Component {
 
             <div className="sidebar-feature-container">
               <ul className="feature-list">
-                {this.sidebarFeatureList.map((item, i) => (<li key={i + 1} className="feature-list-item list-item">{item}</li>))}
+                {this.sidebarFeatureList.map((item, i) => (<li key={i + 1} 
+                  className={`feature-list-item list-item ${diffKeys && diffKeys.indexOf(item) !== -1 ? 'highlight' : ''}`}>{item}</li>))}
               </ul>
             </div>
           </div>
@@ -116,7 +149,7 @@ class Products extends Component {
                             && key !== 'manufacturerImage' && key !== 'manufacturerName' && key !== 'name' && item[key] !== ''
                             && key !== 'productImage' && key !== 'salePrice' && key !== 'sortedKeys' && key !== 'badges') &&
 
-                            <li key={keyIndex + 1} className="product-feature-list-item list-item">{item[key]}</li>}
+                            <li key={keyIndex + 1} className={`product-feature-list-item list-item ${diffKeys && diffKeys.indexOf(key) !== -1 ? 'highlight' : ''}`}>{item[key]}</li>}
                         </>
                       ))}
                     </ul>
