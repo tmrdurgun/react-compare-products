@@ -103,6 +103,9 @@ class Products extends Component {
   render() {
     const { products, diffKeys } = this.state;
 
+    console.log('products: ', products);
+    
+
     return (
 
       <>

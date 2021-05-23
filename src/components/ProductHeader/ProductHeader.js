@@ -6,7 +6,7 @@ export default function ProductHeader(props){
   const { productItem } = props;
 
   return (
-    <div className="product-header">
+    <div className="product-header" data-testid="product-header">
       <div className="product-header-picture">
 
         {/* Product picture url were broken from the API response object so I needed to add it manually here as png. */}
