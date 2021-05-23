@@ -8,6 +8,18 @@ import Sidebar from '../Sidebar/Sidebar';
 import ProductHeader from '../ProductHeader/ProductHeader';
 import ProductItem from '../ProductItem/ProductItem';
 
+/* 
+  In attantion to the reviewer :) 
+
+  1. I had an issue with sorting API response object keys as Alphapetically as you wanted
+   so made a diffrent approach here
+   and created an array from Object keys, 
+   sorted them and added as a new property on response objects.
+
+  2. I've used class component here and for other components I used function components just to show you that I can use them.
+    Normally I use class components if I only use redux store connection for component.
+*/
+
 class Products extends Component {
   constructor(props) {
     super(props);
