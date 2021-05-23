@@ -1,0 +1,32 @@
+@import '../../variables';
+
+.product-header{
+    padding: 0 15px;
+
+    &-picture{
+        width: 75%;
+        margin: auto;
+
+        img{
+            width: 100%;
+        }
+    }
+
+    &-name{
+        color: $primaryColor;
+        margin-bottom: 15px;
+    }
+
+    &-price{
+        font-weight: 700;
+        font-size: 1.2em;
+        margin-bottom: 5px;
+    }
+
+    &-desc{
+        color: $lightFontColor;
+        font-size: 12px;
+        padding-bottom: 25px;
+        border-bottom: 1px solid $borderColor;
+    }
+}

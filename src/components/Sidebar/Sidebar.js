@@ -1,4 +1,5 @@
 import React from 'react';
+import './style.scss';
 
 export default function Sidebar(props) {
   const { products, diffKeys, sidebarFeatureList } = props;

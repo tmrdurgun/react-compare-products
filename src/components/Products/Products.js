@@ -3,10 +3,10 @@ import './style.scss';
 import { request } from '../../utils/request';
 import { COMPARE_PRODUCTS_URL } from '../../constants/urls';
 import { helpers } from '../../utils/helpers';
-import productImg from '../../assets/images/product.png';
 import badgesImg from '../../assets/images/badges.png';
 
 import Sidebar from '../Sidebar/Sidebar';
+import ProductHeader from '../ProductHeader/ProductHeader';
 
 class Products extends Component {
   constructor(props) {
@@ -110,19 +110,12 @@ class Products extends Component {
             handleItemSelect={(item, checked) => this.handleItemSelect(item, checked)}
           />} 
 
-          <div className="products-page">
+          <div className="products-wrapper">
             {products && products.map((item, i) => (
               <>
                 {item.display && <div className="product">
 
-                  <div className="product-header">
-                    <div className="product-header-picture">
-                      <img src={productImg} alt="" />
-                    </div>
-                    <div className="product-header-name text-bold">{item.name}</div>
-                    <div className="product-header-price">{item.salePrice}</div>
-                    <div className="product-header-desc">per stuk / excl. btw</div>
-                  </div>
+                  <ProductHeader productItem={item}/>
                   
                   <div className="product-content">
                     <ul className="product-feature-list">
@@ -145,6 +138,7 @@ class Products extends Component {
 
             ))}
           </div>
+        
         </div>
 
       </>

@@ -1,0 +1,40 @@
+@import '../../variables';
+
+.products-sidebar{
+    min-width: 250px;
+    max-width: 250px;
+    border-right: 1px solid $borderColor;
+    
+    .sidebar-title{
+        color: $primaryColor;
+        padding: 20px 0;
+        margin-top: 15px;
+    }
+
+    .sidebar-filter{
+        &-list{
+            padding-right: 15px;
+        }
+
+        &-list-item{
+            
+            margin-bottom: 15px;
+
+            label{
+                display: flex;
+                cursor: pointer;
+
+                span {
+                    display: inline-block;
+                    margin-left: 10px;
+                }
+            }
+            
+            
+        }
+    }
+
+    .sidebar-feature-container{
+        margin-top: 74px;
+    }
+}

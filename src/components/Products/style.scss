@@ -5,88 +5,14 @@
     padding-bottom: 40px;
     border-bottom: 4px solid $primaryColor;
 
-    .products-sidebar{
-        min-width: 250px;
-        max-width: 250px;
-        border-right: 1px solid $borderColor;
-        
-        .sidebar-title{
-            color: $primaryColor;
-            padding: 20px 0;
-            margin-top: 15px;
-        }
-
-        .sidebar-filter{
-            &-list{
-                padding-right: 15px;
-            }
-
-            &-list-item{
-                
-                margin-bottom: 15px;
-
-                label{
-                    display: flex;
-                    cursor: pointer;
-
-                    span {
-                        display: inline-block;
-                        margin-left: 10px;
-                    }
-                }
-                
-                
-            }
-        }
-
-        .sidebar-feature-container{
-            margin-top: 74px;
-        
-            .feature-list{
-                &-item{
-
-                }
-            }
-        }
-    }
-
-    .products-page{
+    .products-wrapper{
         display: flex;
 
         .product{
             position: relative;
             max-width: 300px;
 
-            &-header{
-                padding: 0 15px;
-
-                &-picture{
-                    width: 75%;
-                    margin: auto;
-
-                    img{
-                        width: 100%;
-                    }
-                }
-    
-                &-name{
-                    color: $primaryColor;
-                    margin-bottom: 15px;
-                }
-    
-                &-price{
-                    font-weight: 700;
-                    font-size: 1.2em;
-                    margin-bottom: 5px;
-                }
-    
-                &-desc{
-                    color: $lightFontColor;
-                    font-size: 12px;
-                    padding-bottom: 25px;
-                    border-bottom: 1px solid $borderColor;
-                }
-            }
+            
 
             &-content{
                 position: absolute;
