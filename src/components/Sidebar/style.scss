@@ -36,5 +36,9 @@
 
     .sidebar-feature-container{
         margin-top: 74px;
+
+        @media screen and (max-width: 1366px) {
+            margin-top: 21px;
+        }
     }
 }
