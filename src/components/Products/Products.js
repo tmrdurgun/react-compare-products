@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './style.scss';
 import { request } from '../../utils/request';
 import { COMPARE_PRODUCTS_URL } from '../../constants/urls';
-import { helpers } from '../../utils/helpers';
+import helpers from '../../utils/helpers';
 
 import Sidebar from '../Sidebar/Sidebar';
 import ProductHeader from '../ProductHeader/ProductHeader';
