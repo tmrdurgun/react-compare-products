@@ -6,6 +6,8 @@ import { helpers } from '../../utils/helpers';
 import productImg from '../../assets/images/product.png';
 import badgesImg from '../../assets/images/badges.png';
 
+import Sidebar from '../Sidebar/Sidebar';
+
 class Products extends Component {
   constructor(props) {
     super(props);
@@ -101,29 +103,12 @@ class Products extends Component {
 
         <div className="products-container">
 
-          <div className="products-sidebar">
-            <h4 className="sidebar-title">Je selectie</h4>
-
-            <div className="sidebar-filter">
-              <ul className="sidebar-filter-list">
-                {products && products.map((item, i) => (
-                  <li key={i + 1} className="sidebar-filter-list-item">
-                    <label htmlFor={`product-cb-${i + 1}`}>
-                      <input type="checkbox" id={`product-cb-${i + 1}`} checked={item.display} onChange={(e) => this.handleItemSelect(item, e.target.checked)} />
-                      <span className="text-bold">{item.name}</span>
-                    </label>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            <div className="sidebar-feature-container">
-              <ul className="feature-list">
-                {this.sidebarFeatureList.map((item, i) => (<li key={i + 1} 
-                  className={`feature-list-item list-item ${diffKeys && diffKeys.indexOf(item) !== -1 ? 'highlight' : ''}`}>{item}</li>))}
-              </ul>
-            </div>
-          </div>
+          {products && <Sidebar
+            products={products}
+            diffKeys={diffKeys}
+            sidebarFeatureList={this.sidebarFeatureList}
+            handleItemSelect={(item, checked) => this.handleItemSelect(item, checked)}
+          />} 
 
           <div className="products-page">
             {products && products.map((item, i) => (
