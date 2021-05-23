@@ -4,8 +4,6 @@ import './style.scss';
 export default function Sidebar(props) {
   const { products, diffKeys, sidebarFeatureList } = props;
 
-  console.log(props);
-
   return (
     <div className="products-sidebar">
       <h4 className="sidebar-title">Je selectie</h4>

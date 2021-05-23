@@ -3,10 +3,10 @@ import './style.scss';
 import { request } from '../../utils/request';
 import { COMPARE_PRODUCTS_URL } from '../../constants/urls';
 import { helpers } from '../../utils/helpers';
-import badgesImg from '../../assets/images/badges.png';
 
 import Sidebar from '../Sidebar/Sidebar';
 import ProductHeader from '../ProductHeader/ProductHeader';
+import ProductItem from '../ProductItem/ProductItem';
 
 class Products extends Component {
   constructor(props) {
@@ -46,6 +46,7 @@ class Products extends Component {
     let searchIndex = 1;
     let curIndex = 0;
 
+    /* Loop through each product per product recursevily to find diffrent values */ 
     const getObjDiffs = async () => {
       for (const key in products[curIndex]) {
         if (products[curIndex][key] && products[searchIndex] && products[searchIndex][key]) {
@@ -71,8 +72,6 @@ class Products extends Component {
 
     await getObjDiffs();
 
-    console.log('diffKeys: ', diffKeys);  
-
     this.setState({ products, diffKeys });
   }
 
@@ -91,8 +90,6 @@ class Products extends Component {
 
   render() {
     const { products, diffKeys } = this.state;
-
-    console.log('products: ', products);
 
     return (
 
@@ -119,17 +116,7 @@ class Products extends Component {
                   
                   <div className="product-content">
                     <ul className="product-feature-list">
-                      <li className="product-feature-list-item list-item badges"> <img src={badgesImg} alt="" /> </li>
-
-                      {item.sortedKeys.map((key, keyIndex) => (
-                        <>
-                          {(key !== 'atp' && key !== 'display' && key !== 'grossPrice' && key !== 'listPrice'
-                            && key !== 'manufacturerImage' && key !== 'manufacturerName' && key !== 'name' && item[key] !== ''
-                            && key !== 'productImage' && key !== 'salePrice' && key !== 'sortedKeys' && key !== 'badges') &&
-
-                            <li key={keyIndex + 1} className={`product-feature-list-item list-item ${diffKeys && diffKeys.indexOf(key) !== -1 ? 'highlight' : ''}`}>{item[key]}</li>}
-                        </>
-                      ))}
+                      <ProductItem productItem={item} diffKeys={diffKeys}/>
                     </ul>
                   </div>
 
