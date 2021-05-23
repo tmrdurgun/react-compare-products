@@ -54,6 +54,15 @@ class Products extends Component {
     const data = await request(COMPARE_PRODUCTS_URL, 'GET');
     const products = data.products.map((item) => this.helpers.sortKeyAlphabetic(item));
 
+    this.setState({ products });
+
+    await this.getDiffs();
+  }
+
+  getDiffs = async () => {
+
+    const { products } = this.state;
+
     const diffKeys = [];
     let searchIndex = 1;
     let curIndex = 0;
@@ -84,7 +93,7 @@ class Products extends Component {
 
     await getObjDiffs();
 
-    this.setState({ products, diffKeys });
+    this.setState({ diffKeys });
   }
 
   async handleItemSelect(item, checked) {
@@ -98,6 +107,16 @@ class Products extends Component {
         return product;
       })
     }))
+  }
+
+  handleRemoveProduct = async (item) => {
+    console.log(item);
+
+    this.setState((prevState) => ({
+      products: prevState.products.filter((product => product.Artikelnummer !== item.Artikelnummer))
+    }), async () => {
+      await this.getDiffs();
+    });
   }
 
   render() {
@@ -127,7 +146,7 @@ class Products extends Component {
               <>
                 {item.display && <div className="product">
 
-                  <ProductHeader productItem={item}/>
+                  <ProductHeader productItem={item} handleRemoveProduct={this.handleRemoveProduct}/>
                   
                   <div className="product-content">
                     <ul className="product-feature-list">
