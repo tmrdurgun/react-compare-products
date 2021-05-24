@@ -25,7 +25,7 @@ class Products extends Component {
     super(props);
 
     this.state = {
-      products: null,
+      products: props.products || null,
       diffKeys: null
     }
 
@@ -118,9 +118,6 @@ class Products extends Component {
   render() {
     const { products, diffKeys } = this.state;
 
-    console.log('products: ', products);
-    
-
     return (
 
       <>
@@ -140,7 +137,7 @@ class Products extends Component {
           <div className="products-wrapper">
             {products && products.map((item, i) => (
               <>
-                {item.display && <div className="product">
+                {item.display && <div className="product" data-testid={`products-product-item-${i + 1}`}>
 
                   <ProductHeader productItem={item} handleRemoveProduct={this.handleRemoveProduct}/>
                   

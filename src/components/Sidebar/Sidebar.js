@@ -12,7 +12,7 @@ export default function Sidebar(props) {
         <ul className="sidebar-filter-list">
           {products && products.map((item, i) => (
             <li key={i + 1} className="sidebar-filter-list-item">
-              <label htmlFor={`product-cb-${i + 1}`}>
+              <label htmlFor={`product-cb-${i + 1}`} data-testid={`sidebar-product-item-${i + 1}`}>
                 <input type="checkbox" id={`product-cb-${i + 1}`} checked={item.display} onChange={(e) => props.handleItemSelect(item, e.target.checked)} />
                 <span className="text-bold">{item.name}</span>
               </label>
