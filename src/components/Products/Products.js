@@ -106,8 +106,6 @@ class Products extends Component {
   }
 
   handleRemoveProduct = async (item) => {
-    console.log(item);
-
     this.setState((prevState) => ({
       products: prevState.products.filter((product => product.Artikelnummer !== item.Artikelnummer))
     }), async () => {
