@@ -34,19 +34,15 @@ class Products extends Component {
     this.sidebarFeatureList = [
       "Keurmerk",
       "Artikelnummer",
-      "channel",
       "Hardheid",
       "Inwendige diameter",
       "Kleur",
       "Maat volgens AS568",
       "Materiaal",
-      "minQuantity",
-      "sku",
       "Snoerdikte",
       "stepQuantity",
       "Temperatuurgebied",
-      "Toepassing",
-      "uom"
+      "Toepassing"
     ]
   }
 

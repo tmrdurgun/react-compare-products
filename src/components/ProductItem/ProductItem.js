@@ -14,7 +14,8 @@ export default function ProductItem(props) {
         <>
           {(key !== 'atp' && key !== 'display' && key !== 'grossPrice' && key !== 'listPrice'
             && key !== 'manufacturerImage' && key !== 'manufacturerName' && key !== 'name' && productItem[key] !== ''
-            && key !== 'productImage' && key !== 'salePrice' && key !== 'sortedKeys' && key !== 'badges') &&
+            && key !== 'productImage' && key !== 'salePrice' && key !== 'sortedKeys' && key !== 'badges'
+            && key !== 'uom' && key !== 'minQuantity' && key !== 'sku' && key !== 'channel') &&
 
             <li key={keyIndex + 1} 
               className={`product-feature-list-item list-item ${diffKeys && diffKeys.indexOf(key) !== -1 ? 'highlight' : ''}`}
